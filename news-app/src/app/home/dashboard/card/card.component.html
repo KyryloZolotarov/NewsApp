@@ -1,0 +1,15 @@
+<mat-card>
+    <img mat-card-image [src]="this.article.image_url" alt="Image">
+    <mat-card-header>
+      <mat-card-subtitle>{{this.article.published_at}}</mat-card-subtitle>
+      <mat-card-title>{{this.article.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{this.article.summary}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="read-more-btn" (click)="goToPost()">
+        Read more
+      </button>
+    </mat-card-actions>
+  </mat-card>

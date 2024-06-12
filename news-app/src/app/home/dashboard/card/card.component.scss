@@ -1,0 +1,47 @@
+$card-margin: 16px;
+$card-width-percentage: 33.33%;
+$btn-margin: 8px;
+$btn-color: #333;
+$btn-hover-color: #000;
+$btn-font-size: 16px;
+$btn-font-weight: bold;
+$arrow-margin-left: 8px;
+
+@mixin card-style {
+  margin: $card-margin;
+  width: calc(#{$card-width-percentage} - 2 * $card-margin); /* учитываем отступы */
+}
+
+@mixin read-more-button-style {
+  margin: $btn-margin;
+  background: none;
+  border: none;
+  color: $btn-color;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  &::after {
+    content: '→'; /* Стрелка */
+    margin-left: $arrow-margin-left; /* Отступ между текстом и стрелкой */
+  }
+}
+
+.mat-card {
+  @include card-style;
+}
+
+.mat-card-content {
+  overflow: auto;
+}
+
+.read-more-btn {
+  @include read-more-button-style;
+}
