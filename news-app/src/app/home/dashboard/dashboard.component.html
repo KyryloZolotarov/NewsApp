@@ -1,19 +1,38 @@
 <div style="padding-bottom: 5%;">
-    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;">Results: 2</h6>
+    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;" *ngIf="!searchActivated">
+      Results: {{totalArticles}}
+    </h6>
+    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;" *ngIf="searchActivated">
+      Results:
+    </h6>
     <div class="container">
-      <div class="row" style="margin-top: 2%; margin-bottom: 2%;" *NgFor="let singleArticle of this.articles">
-        <div class="col">
+      <div class="row" >
+        <div class="col-sm-4" *ngFor="let singleArticle of articles" style="margin-top: 2%; margin-bottom: 2%;">
           <app-card [article]="singleArticle"></app-card>
         </div>
       </div>
     </div>
-    <div style="display: flex; justify-content: center;">
+    <div style="display: flex; justify-content: center;" *ngIf="!searchActivated">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">←</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">→</a></li>
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">←</a>
+        </li>
+        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="currentPage === page" [class.disabled]="page === '...'">
+          <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">→</a>
+        </li>
       </ul>
-    </div> 
+    </div>
+    <div style="display: flex; justify-content: center;" *ngIf="searchActivated">
+      <ul class="pagination">
+        <li class="page-item" style="margin-right: 10px;" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="onPageChange(currentPage - 1)">←</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="onPageChange(currentPage + 1)">→</a>
+        </li>
+      </ul>
+    </div>
   </div>

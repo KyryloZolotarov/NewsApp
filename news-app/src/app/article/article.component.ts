@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { SpaceflightNewsService } from '../services/spaceflight-news.service';
 import { IArticle } from '../home/dashboard/Interfaces/article';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions } from '@angular/material/card';
 
 @Component({
   selector: 'app-post',
   standalone: true,
-  imports: [],
+  imports: [[MatCard, MatCardHeader, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions]],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
@@ -29,13 +30,20 @@ export class ArticleComponent {
     events:[]
   };
 
-  constructor(private spaceflightNewsService: SpaceflightNewsService, private route: ActivatedRoute) { }
+  constructor(private spaceflightNewsService: SpaceflightNewsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
+    console.log(idParam);
     if (idParam !== null) {
-      this.id = +idParam;
+      this.id = +idParam.replace(':', '');
     }
+    console.log(this.id);
+    this.getArticleById();
+  }
+
+  goToHomePage() {
+      this.router.navigate([``]);
   }
   
   

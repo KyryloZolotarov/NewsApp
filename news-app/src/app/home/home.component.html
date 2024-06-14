@@ -1,2 +1,2 @@
-<app-search></app-search>
-<app-dashboard></app-dashboard>
+<app-search (search)="onSearch($event)"></app-search>
+<app-dashboard [search]="keyWords"></app-dashboard>

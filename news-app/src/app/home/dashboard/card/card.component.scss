@@ -6,10 +6,18 @@ $btn-hover-color: #000;
 $btn-font-size: 16px;
 $btn-font-weight: bold;
 $arrow-margin-left: 8px;
+$card-content-height: 150px; /* фиксированная высота содержимого карточки */
 
 @mixin card-style {
   margin: $card-margin;
   width: calc(#{$card-width-percentage} - 2 * $card-margin); /* учитываем отступы */
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-image {
+  height: 200px;
+  object-fit: cover;
 }
 
 @mixin read-more-button-style {
@@ -36,12 +44,27 @@ $arrow-margin-left: 8px;
 
 .mat-card {
   @include card-style;
-}
 
-.mat-card-content {
-  overflow: auto;
+  .mat-card-image {
+    @include card-image;
+  }
+
+  .mat-card-content {
+    height: $card-content-height;
+    overflow: auto;
+    flex-grow: 1;
+  }
+
+  .mat-card-actions {
+    justify-content: flex-end;
+    margin-top: auto; /* Push actions to the bottom */
+  }
 }
 
 .read-more-btn {
   @include read-more-button-style;
+}
+
+.mat-form-field {
+  width: 100%;
 }

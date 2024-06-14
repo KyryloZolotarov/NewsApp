@@ -1,0 +1,68 @@
+$card-margin: 16px;
+$card-width-percentage: 33.33%;
+$btn-margin: 8px;
+$btn-color: #333;
+$btn-hover-color: #000;
+$btn-font-size: 16px;
+$btn-font-weight: bold;
+$arrow-margin-right: 8px;
+$card-content-height: 150px; /* фиксированная высота содержимого карточки */
+
+@mixin card-style {
+  margin: $card-margin;
+  width: calc(#{$card-width-percentage} - 2 * $card-margin); /* учитываем отступы */
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-image {
+}
+
+@mixin read-more-button-style {
+  margin: $btn-margin;
+  background: none;
+  border: none;
+  color: $btn-color;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: $btn-hover-color;
+  }
+
+  &::before {
+    content: '←'; /* Стрелка */
+    margin-right: $arrow-margin-right; /* Отступ между текстом и стрелкой */
+  }
+}
+
+.mat-card {
+  @include card-style;
+
+  .mat-card-image {
+    @include card-image;
+  }
+
+  .mat-card-content {
+    height: $card-content-height;
+    overflow: auto;
+    flex-grow: 1;
+  }
+
+  .mat-card-actions {
+    justify-content: flex-end;
+    margin-top: auto; /* Push actions to the bottom */
+  }
+}
+
+.read-more-btn {
+  @include read-more-button-style;
+}
+
+.mat-form-field {
+  width: 100%;
+}

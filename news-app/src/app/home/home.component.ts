@@ -10,5 +10,9 @@ import { SearchComponent } from './search/search.component';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
+ keyWords:string="";
+ onSearch(search:string){
+  console.log(search);
+  this.keyWords = search;
+ }
 }

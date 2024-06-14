@@ -4,7 +4,6 @@ $btn-font-size: 16px;
 $btn-font-weight: bold;
 $btn-margin: 8px;
 
-
 @mixin button-style {
   margin: $btn-margin;
   background: none;
@@ -19,6 +18,7 @@ $btn-margin: 8px;
 
   &:hover {
     color: $btn-hover-color;
+    cursor: pointer; // Add cursor change on hover
   }
 }
 
@@ -28,4 +28,8 @@ $btn-margin: 8px;
 
 .left-btn {
   @include button-style;
+}
+
+.pagination .page-link {
+  cursor: pointer; // Ensure the cursor changes to pointer
 }
