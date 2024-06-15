@@ -9,8 +9,7 @@ import { IQueryParams } from './interfaces/queryParams';
 export class SpaceflightNewsService {
   private apiUrl = 'https://api.spaceflightnewsapi.net/v4/articles';
 
-  constructor(private http: HttpClient) { 
-    console.log("hhtp");
+  constructor(private http: HttpClient) {
   }
 
 

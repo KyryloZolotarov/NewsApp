@@ -1,9 +1,6 @@
 <div style="padding-bottom: 5%;">
-    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;" *ngIf="!searchActivated">
+    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;">
       Results: {{totalArticles}}
-    </h6>
-    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;" *ngIf="searchActivated">
-      Results:
     </h6>
     <div class="container">
       <div class="row" >
@@ -12,26 +9,16 @@
         </div>
       </div>
     </div>
-    <div style="display: flex; justify-content: center;" *ngIf="!searchActivated">
+    <div style="display: flex; justify-content: center;">
       <ul class="pagination">
-        <li class="page-item" [class.disabled]="currentPage === 1">
-          <a class="page-link" (click)="onPageChange(currentPage - 1)">←</a>
+        <li class="page-item" [class.disabled]="articlesOffset === 0">
+          <a class="page-link" (click)="onPreviousPageChange()">←</a>
         </li>
-        <li class="page-item" *ngFor="let page of visiblePages" [class.active]="currentPage === page" [class.disabled]="page === '...'">
-          <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+        <li class="page-item">
+          <a class="page-link">{{ articlesOffset/articlesLimit +1 }}</a>
         </li>
-        <li class="page-item" [class.disabled]="currentPage === totalPages">
-          <a class="page-link" (click)="onPageChange(currentPage + 1)">→</a>
-        </li>
-      </ul>
-    </div>
-    <div style="display: flex; justify-content: center;" *ngIf="searchActivated">
-      <ul class="pagination">
-        <li class="page-item" style="margin-right: 10px;" [class.disabled]="currentPage === 1">
-          <a class="page-link" (click)="onPageChange(currentPage - 1)">←</a>
-        </li>
-        <li class="page-item" [class.disabled]="currentPage === totalPages">
-          <a class="page-link" (click)="onPageChange(currentPage + 1)">→</a>
+        <li class="page-item" [class.disabled]="isNextPageAvailable">
+          <a class="page-link" (click)="onNextPageChange()">→</a>
         </li>
       </ul>
     </div>

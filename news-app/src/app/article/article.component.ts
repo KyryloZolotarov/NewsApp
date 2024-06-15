@@ -34,11 +34,9 @@ export class ArticleComponent {
 
   ngOnInit() {
     const idParam = this.route.snapshot.paramMap.get('id');
-    console.log(idParam);
     if (idParam !== null) {
       this.id = +idParam.replace(':', '');
     }
-    console.log(this.id);
     this.getArticleById();
   }
 
