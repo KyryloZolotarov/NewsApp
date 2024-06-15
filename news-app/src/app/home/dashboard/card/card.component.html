@@ -1,11 +1,13 @@
 <mat-card style="height: 100%;">
     <img mat-card-image [src]="this.article.image_url" style="height: 200px; object-fit: cover;" alt="Image">
     <mat-card-header>
-      <mat-card-subtitle>{{this.article.published_at}}</mat-card-subtitle>
-      <mat-card-title>{{this.article.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <img src="https://img.icons8.com/?size=100&id=udduMUcrHmZa&format=png&color=000000" alt="calendar icon" class="small-icon">
+        {{ this.article.published_at | date:'MMMM d, yyyy' }}
+      </mat-card-subtitle>
+      <mat-card-title [innerHTML]="this.article.title | highlight:words"></mat-card-title>
     </mat-card-header>
     <mat-card-content [innerHTML]="tuncatedSummary | highlight:words">
-      <!-- <p>{{tuncatedSummary}}</p> --> <!-- Удалите эту строку, если используется innerHTML -->
     </mat-card-content>
     <mat-card-actions>
       <button class="read-more-btn" (click)="goToPost()">

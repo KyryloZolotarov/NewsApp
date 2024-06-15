@@ -4,6 +4,6 @@
         <button  mat-icon-button matPrefix mat-icon-button matSuffix (click)="onSearch()">
             <mat-icon>search</mat-icon>
             </button>
-            <input matInput  placeholder="The most successful IT companies in 2020" [(ngModel)]="searchQuery">
+            <input matInput  placeholder="The most successful IT companies in 2020" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
     </mat-form-field>
 </div>
