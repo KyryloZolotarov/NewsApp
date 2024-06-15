@@ -4,7 +4,7 @@
     </h6>
     <div class="container">
       <div class="row" >
-        <div class="col-sm-4" *ngFor="let singleArticle of articles" style="margin-top: 2%; margin-bottom: 2%;">
+        <div class="col-sm-4" *ngFor="let singleArticle of filteredArticles" style="margin-top: 2%; margin-bottom: 2%;">
           <app-card [article]="singleArticle"></app-card>
         </div>
       </div>
@@ -17,7 +17,7 @@
         <li class="page-item">
           <a class="page-link">{{ articlesOffset/articlesLimit +1 }}</a>
         </li>
-        <li class="page-item" [class.disabled]="isNextPageAvailable">
+        <li class="page-item" [class.disabled]="!isNextPageAvailable">
           <a class="page-link" (click)="onNextPageChange()">→</a>
         </li>
       </ul>
