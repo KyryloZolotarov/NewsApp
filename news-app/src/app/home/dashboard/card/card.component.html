@@ -4,8 +4,8 @@
       <mat-card-subtitle>{{this.article.published_at}}</mat-card-subtitle>
       <mat-card-title>{{this.article.title}}</mat-card-title>
     </mat-card-header>
-    <mat-card-content [innerHTML]="tuncatedSummary | highlight: 'frank'">
-      <p>{{tuncatedSummary}}</p>
+    <mat-card-content [innerHTML]="tuncatedSummary | highlight:words">
+      <!-- <p>{{tuncatedSummary}}</p> --> <!-- Удалите эту строку, если используется innerHTML -->
     </mat-card-content>
     <mat-card-actions>
       <button class="read-more-btn" (click)="goToPost()">

@@ -53,6 +53,12 @@ $card-content-height: 150px; /* фиксированная высота соде
     height: $card-content-height;
     overflow: auto;
     flex-grow: 1;
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      /* Другие стили, если нужно */
+    }
   }
 
   .mat-card-actions {
@@ -68,3 +74,5 @@ $card-content-height: 150px; /* фиксированная высота соде
 .mat-form-field {
   width: 100%;
 }
+
+

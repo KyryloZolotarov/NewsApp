@@ -11,8 +11,10 @@ import { HighlightPipe } from '../../../highlight.pipe';
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
-export class CardComponent implements OnInit  {
+export class CardComponent implements OnInit, OnChanges {
   @Input() article!: IArticle;
+  @Input() searchItems!: string;
+  words:string[] =[];
   tuncatedSummary:string = "";
 
 
@@ -20,8 +22,19 @@ export class CardComponent implements OnInit  {
    }   
 
   ngOnInit(){
+    this.getWordsForSearch();
     this.getTruncatedSummary();
 
+   }
+
+   ngOnChanges(changes: SimpleChanges): void {
+    this.getWordsForSearch();
+   }
+
+   getWordsForSearch(){
+    if(this.searchItems !== ""){
+      this.words = this.searchItems.split(/\W+/);
+    }    
    }
 
    getTruncatedSummary() {

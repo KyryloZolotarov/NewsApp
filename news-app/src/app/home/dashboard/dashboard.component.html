@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row" >
         <div class="col-sm-4" *ngFor="let singleArticle of filteredArticles" style="margin-top: 2%; margin-bottom: 2%;">
-          <app-card [article]="singleArticle"></app-card>
+          <app-card [article]="singleArticle" [searchItems]="search"></app-card>
         </div>
       </div>
     </div>

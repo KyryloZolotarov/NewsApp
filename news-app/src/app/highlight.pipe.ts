@@ -6,12 +6,19 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class HighlightPipe implements PipeTransform {
 
-  transform(value: string, search: string): string {
-    if (!search) {
+  transform(value: string, searchTerms: string[]): string {
+
+    if (!searchTerms || searchTerms.length === 0) {
       return value;
     }
-    const re = new RegExp(search, 'gi');
-    return value.replace(re, (match) => `<span class="highlight">${match}</span>`);
-  }
 
+    searchTerms.forEach(term => {
+      if (term) {
+        const re = new RegExp(term, 'gi');
+        value = value.replace(re, (match) => `<span class="highlight">${match}</span>`);
+      }
+    });
+
+    return value;
+  }
 }
