@@ -1,0 +1,16 @@
+  mat-form-field {
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина для удобства */
+  }
+  
+  mat-form-field .mat-form-field-prefix {
+    display: flex;
+    align-items: center;
+    margin-right: 8px; /* Расстояние между иконкой и текстом */
+  }
+  
+  button[mat-icon-button] {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }

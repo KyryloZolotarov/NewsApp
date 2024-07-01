@@ -1,0 +1,25 @@
+<div style="padding-bottom: 5%;">
+    <h6 style="margin-left: 5%; margin-right: 5%; border-bottom: 1px solid grey;">
+      Results: {{totalArticles}}
+    </h6>
+    <div class="container">
+      <div class="row" >
+        <div class="col-sm-4" *ngFor="let singleArticle of filteredArticles" style="margin-top: 2%; margin-bottom: 2%;">
+          <app-card [article]="singleArticle" [searchItems]="search"></app-card>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="articlesOffset === 0">
+          <a class="page-link" (click)="onPreviousPageChange()">←</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link">{{ articlesOffset/articlesLimit +1 }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="!isNextPageAvailable">
+          <a class="page-link" (click)="onNextPageChange()">→</a>
+        </li>
+      </ul>
+    </div>
+  </div>
